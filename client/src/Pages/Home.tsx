@@ -9,6 +9,13 @@ import {
 } from "../Components/MainStyledComponents";
 import { Button } from "@mui/material";
 import { AnimatePresence } from "framer-motion";
+import {
+  MAIN_HOME_HEADER,
+  MAIN_HOME_NUMBER_ONE_INPUT,
+  MAIN_HOME_NUMBER_TWO_INPUT,
+  MAIN_HOME_ADD_BUTTON,
+  MAIN_HOME_RESULT,
+} from "../Config/dataTestIds";
 
 export default function Home() {
   const [numberOne, setNumberOne] = React.useState("");
@@ -43,26 +50,36 @@ export default function Home() {
           type: "tween",
         }}
       >
-        <StyledText>{"Adding Two Numbers"}</StyledText>
+        <StyledText data-testid={MAIN_HOME_HEADER}>
+          {"Adding Two Numbers"}
+        </StyledText>
         <StyledTextField
+          data-testid={MAIN_HOME_NUMBER_ONE_INPUT}
           label="Number 1"
           type="number"
           onChange={(e) => setNumberOne(e.target.value)}
         />
         <StyledPadding />
         <StyledTextField
+          data-testid={MAIN_HOME_NUMBER_TWO_INPUT}
           label="Number 2"
           type="number"
           onChange={(e) => setNumberTwo(e.target.value)}
         />
         <StyledPadding />
-        <Button variant="contained" color="primary" onClick={handleButtonClick}>
+        <Button
+          data-testid={MAIN_HOME_ADD_BUTTON}
+          variant="contained"
+          color="primary"
+          onClick={handleButtonClick}
+        >
           {"Add"}
         </Button>
         <StyledPadding />
         <AnimatePresence>
           <StyledResultText
             key={result}
+            data-testid={MAIN_HOME_RESULT}
             animate={{
               fontSize: "3rem",
               opacity: 1,
